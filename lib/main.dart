@@ -18,12 +18,10 @@ class _AboutMeAppState extends State<AboutMeApp> {
         colorScheme: ColorScheme.light(
           primary: Colors.blue,
           secondary: Colors.blueAccent,
-          background: Colors.white,
           surface: Colors.white,
           onPrimary: Colors.white,
           onSecondary: Colors.white,
-          onBackground: Colors.grey[800]!,
-          onSurface: Colors.black,
+          onSurface: Colors.grey[800]!,
         ),
       );
 
@@ -32,11 +30,9 @@ class _AboutMeAppState extends State<AboutMeApp> {
         colorScheme: ColorScheme.dark(
           primary: Colors.indigo,
           secondary: Colors.deepPurpleAccent,
-          background: Colors.black,
           surface: Colors.grey[900]!,
           onPrimary: Colors.white,
           onSecondary: Colors.white,
-          onBackground: Colors.white,
           onSurface: Colors.white,
         ),
       );
@@ -84,7 +80,7 @@ class AboutMePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: Theme.of(context).colorScheme.onBackground,
+                    color: Theme.of(context).colorScheme.onSurface,
                     width: 4,
                   ),
                 ),
@@ -100,10 +96,22 @@ class AboutMePage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 12),
-              Text(
-                'A short bio about yourself goes here. You can mention your interests, background, or anything you want to share. This template is modern, clean, and easy to customize.',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  ListTile(
+                    leading: Icon(Icons.circle, size: 10),
+                    title: Text('Fullstack Developer.'),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.circle, size: 10),
+                    title: Text('Volleyball Player.'),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.circle, size: 10),
+                    title: Text('Floor Gang.'),
+                  ),
+                ],
               ),
               const SizedBox(height: 24),
               Card(
@@ -131,8 +139,8 @@ class AboutMePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: onToggleTheme,
-        child: Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode),
         tooltip: isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode',
+        child: Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode),
       ),
     );
   }
